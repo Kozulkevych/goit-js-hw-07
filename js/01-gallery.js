@@ -1,5 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
@@ -27,19 +27,19 @@ function createGalleryItemsMarkup(items) {
 gallery.addEventListener("click", onGalleryItemClick);
 
 function onGalleryItemClick(e) {
-  event.preventDefault();
-  if (event.target.nodeName !== "IMG") {
+  e.preventDefault();
+  if (e.target.nodeName !== "IMG") {
     return;
   }
 
-  const selectedImage = event.target.dataset.source;
+  const selectedImage = e.target.dataset.source;
   const modal = basicLightbox.create(`
     <img src="${selectedImage}" width="800" height="600">
   `);
   modal.show();
 
   gallery.addEventListener("keydown", (e) => {
-    if (event.key === "Escape") {
+    if (e.code === "Escape") {
       modal.close();
     }
   });
