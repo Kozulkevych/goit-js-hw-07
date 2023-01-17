@@ -38,11 +38,13 @@ function onGalleryItemClick(e) {
   `);
   modal.show();
 
-  gallery.addEventListener("keydown", (e) => {
+  gallery.addEventListener("keydown", onPressKey);
+
+  function onPressKey(e) {
+    // console.log(e);
     if (e.code === "Escape") {
       modal.close();
+      gallery.removeEventListener("keydown", onPressKey);
     }
-  });
+  }
 }
-
-// console.log();
